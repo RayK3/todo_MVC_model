@@ -9,6 +9,28 @@ export default class Controller {
     this.projRep = projRep;
   }
 
+  postRequest() {
+    var projects = this.projRep.projects;
+    var todos = this.todoRep.todos;
+    console.log(projects);
+    projects = JSON.stringify(projects);
+    todos = JSON.stringify(todos);
+
+    var xhttp = new XMLHttpRequest();
+    var url = "http://localhost:8001/create";
+    var params = `projects=${projects}&todos=${todos}`;
+    xhttp.open("POST", url, true);
+
+    xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+    xhttp.onreadystatechange = function() {
+      if(this.readystate == 4 && this.status == 200) {
+        console.log('Sent the new objects');
+      }
+    }
+    xhttp.send(params);
+  }
+
   createProject(name) {
     if(this.projRep.contains(name)) {
       console.log('This project already exists!');

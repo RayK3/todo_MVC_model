@@ -2,7 +2,24 @@ import Project from './Project';
 
 export default class ProjectRepository {
   constructor() {
-    this.projects = [];
+    var xhttp = new XMLHttpRequest();
+    var url = "http://localhost:8001/projects";
+    var self = this;
+
+    xhttp.open("GET", url, false);
+
+    xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    xhttp.onreadystatechange = function() {
+      if(this.readyState == 4 && this.status == 200) {
+        if(!this.responseText) {
+          self.projects = [];
+        } else {
+          var data = JSON.parse(this.responseText);
+          self.projects = data;
+        }
+      }
+    }
+    xhttp.send();
   }
 
   add(project) {

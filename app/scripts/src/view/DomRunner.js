@@ -40,7 +40,7 @@ export default class DomRunner {
     })
   }
 
-  showTodos() {
+  showTodos(firstCall) {
     var todoTable = document.getElementById('todoTable');
     var tableHTML = '';
     tableHTML += `<tr>
@@ -63,9 +63,12 @@ export default class DomRunner {
       button.addEventListener('click', function() {
         var todo = self.controller.todoRep.findByGuid(this.getAttribute('data-guid'));
         self.controller.toggleDone(todo);
-        self.showTodos();
-      })
-    })
+        self.showTodos(false);
+      });
+    });
+    if(!firstCall) {
+      this.controller.postRequest();
+    }
   }
 
   addProject() {
@@ -77,7 +80,7 @@ export default class DomRunner {
     } else {
       this.controller.createProject(addProjectInput.value);
       addProjectInput.value = '';
-      this.showTodos();
+      this.showTodos(false);
     }
   }
 
@@ -90,7 +93,7 @@ export default class DomRunner {
     } else {
       this.controller.deleteProject(removeProjectInput.value);
       removeProjectInput.value = '';
-      this.showTodos();
+      this.showTodos(false);
     }
   }
 
@@ -110,7 +113,7 @@ export default class DomRunner {
       );
       addTodoDescriptionInput.value = '';
       addTodoProjectInput.value = '';
-      this.showTodos();
+      this.showTodos(false);
     }
   }
 
@@ -128,11 +131,11 @@ export default class DomRunner {
       );
       removeTodoDescriptionInput.value = '';
       removeTodoProjectInput.value = '';
-      this.showTodos();
+      this.showTodos(false);
     }
   }
 
   run() {
-    this.showTodos();
+    this.showTodos(true);
   }
 }
