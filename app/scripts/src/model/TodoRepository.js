@@ -30,6 +30,11 @@ class TodoRepository { // todos need to be created before they are added
     return this.todos.map(e => e);
   }
 
+  getAllWithProjectId(project) {
+    let id = project.guid;
+    return this.todos.filter( td => td.project === id );
+  }
+
   remove(todo) {
     this.todos = this.todos.filter(td => td.guid !== todo.guid);
   }

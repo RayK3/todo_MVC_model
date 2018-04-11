@@ -6,31 +6,33 @@
   body * {
     margin: 5px;
   }
+  #container div {
+    margin: 10px;
+    border: 2px solid #DDD;
+    max-width: 450px;
+  }
+  th, td {
+    padding: 5px;
+  }
+  button {
+    border-radius: 5px;
+  }
+  .removeProjectButton {
+    border-width: 2px;
+    border-color: black;
+    background-color: rgba(240, 0, 0, 0.8);
+    color: #CCFFFF;
+  }
   </style>
 </head>
 <body>
-  <table id="todoTable"></table>
-  <div id="add">
-    <div id="addProject">
-      <button id="addProjectButton">Add Project</button>
-      <input type="text" id="addProjectInput"></input>
-    </div>
-    <div id="addTodo">
-      <button id="addTodoButton">Add Todo</button>
-      <input type="text" id="addTodoDescriptionInput" placeholder="description"></input>
-      <input type="text" id="addTodoProjectInput" placeholder="project"></input>
-    </div>
+
+  <div id="addProject">
+    <button id="addProjectButton">Add Project</button>
+    <input type="text" id="addProjectInput"></input>
   </div>
-  <div id="remove">
-    <div id="removeProject">
-      <button id="removeProjectButton">Remove Project</button>
-      <input type="text" id="removeProjectInput"></input>
-    </div>
-    <div id="removeTodo">
-      <button id="removeTodoButton">Remove Todo</button>
-      <input type="text" id="removeTodoDescriptionInput" placeholder="description"></input>
-      <input type="text" id="removeTodoProjectInput" placeholder="project"></input>
-    </div>
+  <div id="container">
   </div>
+
 </body>
 </html>

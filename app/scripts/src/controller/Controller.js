@@ -12,7 +12,7 @@ export default class Controller {
   postRequest() {
     var projects = this.projRep.projects;
     var todos = this.todoRep.todos;
-    console.log(projects);
+
     projects = JSON.stringify(projects);
     todos = JSON.stringify(todos);
 
